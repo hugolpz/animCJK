@@ -154,7 +154,7 @@ var downloadAll = function () {
     for(var i=0;i<3;i++){
         var a = document.createElement("a");                        //Create <a>
         a.href = document.querySelector("#"+letter[i]+' img').src;       // "data:image/png;base64," + ImageBase64;
-        a.download = document.querySelector('#data').value + suffix[i];  // filename
+        a.download = document.querySelector('#data').value[0] + suffix[i];  // filename
         //a.textContent = "Download file.";
         a.click(); //Downloaded file
         //document.querySelector("#"+letter[i]).appendChild(a);
