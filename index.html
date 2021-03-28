@@ -180,7 +180,7 @@ var downloadWhenReady = function(selector){
     }else if(chars && href==''){  // there is a character, and there is base64 data 
       downloadWhenReady(selector);
     }else( // there is no more character
-      break;
+      console.log('All downloaded !')
     )
   }, 2000);
 };
