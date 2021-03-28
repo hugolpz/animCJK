@@ -172,9 +172,9 @@ var downloadWhenReady = function(selector){
     var href = document.querySelector(selector).href;
     if(href!==''){
       downloadAll();
-      var data = document.querySelector('#data').value,
-      document.querySelector('#data').value = data.substring(1);
-      downloadWhenReady(selector);
+      var data = document.getElementById('data').value,
+       document.getElementById('data').value = data.substring(1);
+       downloadWhenReady(selector);
     }else{
       downloadWhenReady(selector) 
     }
