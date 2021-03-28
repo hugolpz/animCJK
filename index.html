@@ -227,39 +227,40 @@ input {font-size:1em;}
     outline-offset: none !important;
 }</style>
 <body>
-<h1>Image factory</h1>
-<div class="dirSelector">
-<p>Select a repository:</p>
-<label><input checked="" type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHans')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
-<label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHansSpecial')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
-<label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHant')"> svgsZhHant (from AnimCJK, 198 characters)</label>
-<label><input type="radio" name="changeDir" value="1" onclick="changeDir('./svgsJa')"> svgsJa (from AnimCJK, 2998 characters)</label>
-<label><input type="radio" name="changeDir" value="3" onclick="changeDir('svgs')"> svgs (from MakeMeAHanzi, test with 鼠貓牛虎兔龍蛇馬羊猴雞狗)</label>
-</div>
-<div class="dirSelector">
-<input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
-<input type="button" value="Create & Download" onclick="ok();downloadAll();">
-</div>
-<p id="status">Push "Create" button to generate the images!</p>
-<p>Images generated on the fly</p>
-<div id="a"></div>
-<!-- <div id="b"></div> -->
-<div id="c"></div>
-<!-- <div id="d"></div> -->
-<div id="e"></div>
-<!-- <p>Note: animated GIF images without grey strokes can be transformed in transparent image
+  <h1>Image factory</h1>
+  <div class="dirSelector">
+    <p>Select a repository:</p>
+    <label><input checked="" type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHans')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
+    <label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHansSpecial')"> svgsZhHans (from AnimCJK, 20 characters)</label>
+    <label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHant')"> svgsZhHant (from AnimCJK, 198 characters)</label>
+    <label><input type="radio" name="changeDir" value="1" onclick="changeDir('./svgsJa')"> svgsJa (from AnimCJK, 2998 characters)</label>
+  </div>>
+  <div class="dirSelector">
+    <input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
+    <input type="button" value="Create & Download" onclick="ok();downloadAll();">
+    <p>test with 鼠貓牛虎兔龍蛇馬羊猴雞狗</p>
+  </div>
+  <p id="status">Push "Create" button to generate the images!</p>
+  <p>Images generated on the fly</p>
+  <div id="a"></div>
+  <!-- <div id="b"></div> -->
+  <div id="c"></div>
+  <!-- <div id="d"></div> -->
+  <div id="e"></div>
+  <!-- <p>Note: animated GIF images without grey strokes can be transformed in transparent image
 using a tool such as gifsicle</p> -->
-<p>Images encoded in base64:
-<input id="showSource" type="button" value="Show sources" onclick="ok2(this)"></p>
-<div>Source of transparent red PNG image: <span id="a2"></span></div>
-<!-- <div>Source of not transparent red PNG image: <span id="b2"></span></div> -->
-<div>Source of animated GIF image with grey strokes: <span id="c2"></span></div>
-<!-- <div>Source of animated GIF image without grey strokes: <span id="d2"></span></div> -->
-<div>Source of sequence PNG image: <span id="e2"></span></div>
-<div id="debug"></div>
-<footer>
-<a href="http://gooo.free.fr/animCJK/official/">Home</a>
-- <a href="./licenses/COPYING.txt">Licences</a>
-</footer>
+  <p>Images encoded in base64:
+    <input id="showSource" type="button" value="Show sources" onclick="ok2(this)"></p>
+  <div>Source of transparent red PNG image: <span id="a2"></span></div>
+  <!-- <div>Source of not transparent red PNG image: <span id="b2"></span></div> -->
+  <div>Source of animated GIF image with grey strokes: <span id="c2"></span></div>
+  <!-- <div>Source of animated GIF image without grey strokes: <span id="d2"></span></div> -->
+  <div>Source of sequence PNG image: <span id="e2"></span></div>
+  <div id="debug"></div>
+  <footer>
+    <a href="http://gooo.free.fr/animCJK/official/">Home</a>
+    - <a href="./licenses/COPYING.txt">Licences</a>
+  </footer>
 
-</body></html>
+</body>
+</html>
