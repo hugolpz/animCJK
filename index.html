@@ -150,11 +150,14 @@ function ok2(input){
 var downloadAll = function () {
     console.log("Starts downloadAll()");
     var letter = ['a','c','e'],
-        suffix = ['-red.png','-sbs.gif', '-bw.png'];
+        suffix = ['red.png','sbs.gif', 'bw.png'],
+	locale= svgsDir=="./svgsHant"? 't':
+    		svgsDir=="./svgsJa"?'j'
+    		: '';
     for(var i=0;i<3;i++){
         var a = document.createElement("a");                        //Create <a>
         a.href = document.querySelector("#"+letter[i]+' img').src;       // "data:image/png;base64," + ImageBase64;
-        a.download = document.querySelector('#data').value[0] + suffix[i];  // filename
+        a.download = document.querySelector('#data').value[0] +'-'+ locale + suffix[i];  // filename
         //a.textContent = "Download file.";
         a.click(); //Downloaded file
         //document.querySelector("#"+letter[i]).appendChild(a);
