@@ -70,7 +70,8 @@ function ok(){
     document.getElementById('data').focus();
     document.getElementById('showSource').value="Show sources";
     // get data from the input field
-	data=document.getElementById("data").value;
+	data=document.getElementById("data").value[0];
+	console.log("Current target is: ",data);
 	if (!data) {status("No data!"); return;}
 	dec=data.codePointAt(0);
     // svgs folder of this demo contains MakeMeAHanzi svg files
@@ -228,8 +229,8 @@ input {font-size:1em;}
 <label><input type="radio" name="changeDir" value="3" onclick="changeDir('svgs')"> svgs (from MakeMeAHanzi, test with 鼠貓牛虎兔龍蛇馬羊猴雞狗)</label>
 </div>
 <div class="dirSelector">
-<input id="data" type="text" maxlength="1" value="馬" placeholder="Enter a character here">
-<input type="button" value="Create" onclick="ok();downloadAll();">
+<input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
+<input type="button" value="Create & Download" onclick="ok();downloadAll();">
 </div>
 <p id="status">Push "Create" button to generate the images!</p>
 <p>Images generated on the fly</p>
