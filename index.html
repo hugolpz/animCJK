@@ -53,6 +53,7 @@ function setBrushing(s){
 	return target.innerHTML.replace(/><\/path>/g,"/>");
 }
 function ok(){
+	console.log("Starts ok()");
 	// do what is necessary when a user clicked on "create" input
 	var data,xhr,file,a,b,c,d,e,a2,b2,c2,d2,e2,dec;
 	// reset display
@@ -111,6 +112,7 @@ function ok(){
     };
   	xhr.open("GET",file,true);
   	xhr.send();
+        console.log("Ends ok()");
 }
 function base64Show(id){
 	e=document.getElementById(id);
@@ -146,6 +148,7 @@ function ok2(input){
 	}
 }
 var downloadAll = function () {
+    console.log("Starts downloadAll()");
     var letter = ['a','c','e'],
         suffix = ['-red.png','-order.gif', '-bw.png'];
     for(var i=0;i<3;i++){
@@ -157,6 +160,7 @@ var downloadAll = function () {
         //document.querySelector("#"+letter[i]).appendChild(a);
         //document.querySelector("#"+letter[i]+' a').click();
     }
+    console.log("Ends downloadAll()");
 };
 </script>
 <style>
