@@ -158,7 +158,7 @@ var downloadAll = function () {
 	// create virtual button to attach data and download it.
         var a = document.createElement("a"),                        //Create <a>
 	    img = document.querySelector("#"+letter[i]+' img') || '';
-        a.href = img? document.querySelector("#"+letter[i]+' img').src || '';       // "data:image/png;base64," + ImageBase64;
+        a.href = img? document.querySelector("#"+letter[i]+' img').src : '';       // "data:image/png;base64," + ImageBase64;
         a.download = document.querySelector('#data').value[0] +'-'+ locale + suffix[i];  // filename
         //a.textContent = "Download file.";
         img?a.click():''; //Downloaded file
