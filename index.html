@@ -162,6 +162,16 @@ var downloadAll = function () {
     }
     console.log("Ends downloadAll()");
 };
+
+var downloadWhenReady = function(selector){ 
+  setTimeout(function() {
+    //your code to be executed after 1 second
+    var href = document.querySelector(selector).href;
+    if(href!==''){ downloadAll(); }
+    else{ downloadWhenReady(selector) }
+  }, 500);
+}
+
 </script>
 <style>
 #a,#b,#c,#d
@@ -237,6 +247,7 @@ input {font-size:1em;}
     <input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
     <input type="button" value="Create" onclick="ok();downloadAll();">
     <input type="button" value="Download" onclick="downloadAll();">
+    <input type="button" value="Download when ready" onclick="downloadWhenReady('#c img');">
     <p>test with 鼠貓牛虎兔龍蛇馬羊猴雞狗</p>
   </div>
   <p id="status">Push "Create" button to generate the images!</p>
