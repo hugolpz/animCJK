@@ -170,16 +170,19 @@ var downloadWhenReady = function(selector){
   setTimeout(function() {
     //your code to be executed after 1 second
     var element = document.querySelector(selector),
-	href = element?element.href:'';
-    if(href!==''){
+	href = element?element.href:'',
+	chars = document.getElementById('data').value;
+    if(href!=='' && chars){   // there is a character, and there is base64 data 
       downloadAll();
-      var data = document.getElementById('data').value;
-      document.getElementById('data').value = data.substring(1);
+      document.getElementById('data').value = chars.substring(1);
+      ok();
       downloadWhenReady(selector);
-    }else{
-      downloadWhenReady(selector) 
-    }
-  }, 500);
+    }else if(chars && href==''){  // there is a character, and there is base64 data 
+      downloadWhenReady(selector);
+    }else( // there is no more character
+      break;
+    )
+  }, 2000);
 };
 
 </script>
@@ -257,7 +260,7 @@ input {font-size:1em;}
     <input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
     <input type="button" value="Create" onclick="ok();downloadAll();">
     <input type="button" value="Download" onclick="downloadAll();">
-    <input type="button" value="Download when ready" onclick="downloadWhenReady('#c img');">
+    <input type="button" value="Download list of characters" onclick="downloadWhenReady('#c img');">
     <p>test with 鼠貓牛虎兔龍蛇馬羊猴雞狗</p>
   </div>
   <p id="status">Push "Create" button to generate the images!</p>
