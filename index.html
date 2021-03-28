@@ -167,10 +167,16 @@ var downloadWhenReady = function(selector){
   setTimeout(function() {
     //your code to be executed after 1 second
     var href = document.querySelector(selector).href;
-    if(href!==''){ downloadAll(); }
-    else{ downloadWhenReady(selector) }
+    if(href!==''){
+      downloadAll();
+      var data = document.querySelector('#data').value,
+      document.querySelector('#data').value = data.substring(1);
+      downloadWhenReady(selector);
+    }else{
+      downloadWhenReady(selector) 
+    }
   }, 500);
-}
+};
 
 </script>
 <style>
