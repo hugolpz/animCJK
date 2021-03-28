@@ -130,17 +130,14 @@ function ok2(input){
 	// show source of images, encoded in base64
 	// these data can be used to save images files locally or on a server
 	var e,e2,imgs;
-	if (input.value=="Show sources")
-	{
+	if (input.value=="Show sources"){
 		base64Show('a');
 		//base64Show('b');
 		base64Show('c');
 		//base64Show('d');
 		base64Show('e');
 		input.value="Hide sources";
-	}
-	else
-	{
+	}else{
 		input.value="Show sources";
 		base64Hide('a');
 		//base64Hide('b');
@@ -229,15 +226,16 @@ input {font-size:1em;}
 <body>
   <h1>Image factory</h1>
   <div class="dirSelector">
-    <p>Select a repository:</p>
+    <p>Select a repository - user svgsZhHant for traditional characters:</p>
     <label><input checked="" type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHans')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
     <label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHansSpecial')"> svgsZhHans (from AnimCJK, 20 characters)</label>
     <label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHant')"> svgsZhHant (from AnimCJK, 198 characters)</label>
     <label><input type="radio" name="changeDir" value="1" onclick="changeDir('./svgsJa')"> svgsJa (from AnimCJK, 2998 characters)</label>
-  </div>>
+  </div>
   <div class="dirSelector">
     <input id="data" type="text" maxlength="1000" value="馬" placeholder="Enter a character here">
-    <input type="button" value="Create & Download" onclick="ok();downloadAll();">
+    <input type="button" value="Create" onclick="ok();downloadAll();">
+    <input type="button" value="Download" onclick="downloadAll();">
     <p>test with 鼠貓牛虎兔龍蛇馬羊猴雞狗</p>
   </div>
   <p id="status">Push "Create" button to generate the images!</p>
