@@ -10,12 +10,10 @@ on the fly from AnimCJK or MakeMeAHanzi SVG files">
 <script src="./js/brushingAcjk.js"></script>
 <script>
 var svgsDir="./svgsJa";
-function debug(s,a)
-{
+function debug(s,a){
 	return;
 	var e;
-	if (e=document.getElementById("debug"))
-	{
+	if (e=document.getElementById("debug")){
 		if (a) e.innerHTML+=s;
 		else e.innerHTML=s;
 	}
@@ -25,42 +23,36 @@ function changeDir(dir)
 {
 	svgsDir=dir;
 }
-function showAnimatedGif(image,background,dec)
-{
+function showAnimatedGif(image,background,dec){
 	if (background=="transparent")
 		document.getElementById("d").innerHTML="<img src=\""+image+"\">";
 	else
 		document.getElementById("c").innerHTML="<img src=\""+image+"\">";
 }
-function setBrushing(s)
-{
+function setBrushing(s){
 	var target,list,k,km,idBrush,eBrush,newD=[];
 	target=document.createElement("div");
 	target.innerHTML=s;
 	list=target.querySelectorAll("svg.acjk path[clip-path]");
 	km=list.length;
-	for (k=0;k<km;k++)
-	{
+	for (k=0;k<km;k++){
 		idBrush=getPathIdFromClipPathAttribute(list[k]);
 		eBrush=target.querySelector("#"+idBrush);
 		eBrush.setAttribute("d",cleanPathBeforeBrushing(eBrush.getAttribute("d")));
 	}
-	for (k=0;k<km;k++)
-	{
+	for (k=0;k<km;k++){
 		idBrush=getPathIdFromClipPathAttribute(list[k]);
 		eBrush=target.querySelector("#"+idBrush);
 		newD[k]=strokeBrushing(eBrush);
 	}
-	for (k=0;k<km;k++)
-	{
+	for (k=0;k<km;k++){
 		idBrush=getPathIdFromClipPathAttribute(list[k]);
 		eBrush=target.querySelector("#"+idBrush);
 		eBrush.setAttribute("d",newD[k]);
 	}
 	return target.innerHTML.replace(/><\/path>/g,"/>");
 }
-function ok()
-{
+function ok(){
 	// do what is necessary when a user clicked on "create" input
 	var data,xhr,file,a,b,c,d,e,a2,b2,c2,d2,e2,dec;
 	// reset display
@@ -88,8 +80,7 @@ function ok()
 	// use ajax to get the svg file from the server
 	xhr=new XMLHttpRequest();
 	xhr.acjk={a:a,b:b,c:c,d:d,e:e,data:data,file:file,dec:dec};
-	xhr.onreadystatechange=function()
-	{
+	xhr.onreadystatechange=function(){
 		var s,sa,sb,se;
 		if ((xhr.readyState==4)&&(xhr.status==200))
 		{
@@ -120,20 +111,17 @@ function ok()
   	xhr.open("GET",file,true);
   	xhr.send();
 }
-function base64Show(id)
-{
+function base64Show(id){
 	e=document.getElementById(id);
 	e2=document.getElementById(id+'2');
 	imgs=e.getElementsByTagName("img");
 	if (imgs&&imgs[0]) e2.innerHTML=imgs[0].getAttribute("src");
 	else e2.innerHTML="no data!";
 }
-function base64Hide(id)
-{
+function base64Hide(id){
 	document.getElementById(id+'2').innerHTML="";
 }
-function ok2(input)
-{
+function ok2(input){
 	// show source of images, encoded in base64
 	// these data can be used to save images files locally or on a server
 	var e,e2,imgs;
@@ -156,6 +144,19 @@ function ok2(input)
 		base64Hide('e');
 	}
 }
+var downloadAll = function () {
+    var letter = ['a','c','e'],
+        suffix = ['-red.png','-order.gif', '-bw.png'];
+    for(var i=0;i<3;i++){
+        var a = document.createElement("a");                        //Create <a>
+        a.href = document.querySelector("#"+letter[i]+' img').src;       // "data:image/png;base64," + ImageBase64;
+        a.download = document.querySelector('#data').value + suffix[i];  // filename
+        //a.textContent = "Download file.";
+        a.click(); //Downloaded file
+        //document.querySelector("#"+letter[i]).appendChild(a);
+        //document.querySelector("#"+letter[i]+' a').click();
+    }
+};
 </script>
 <style>
 #a,#b,#c,#d
@@ -228,7 +229,7 @@ input {font-size:1em;}
 </div>
 <div class="dirSelector">
 <input id="data" type="text" maxlength="1" value="馬" placeholder="Enter a character here">
-<input type="button" value="Create" onclick="ok()">
+<input type="button" value="Create" onclick="ok();downloadAll();">
 </div>
 <p id="status">Push "Create" button to generate the images!</p>
 <p>Images generated on the fly</p>
