@@ -9,7 +9,7 @@ on the fly from AnimCJK or MakeMeAHanzi SVG files">
 <script src="./js/magicAcjk.js"></script>
 <script src="./js/brushingAcjk.js"></script>
 <script>
-var svgsDir="./svgsJa";
+var svgsDir="./svgsHans";
 function debug(s,a){
 	return;
 	var e;
@@ -19,8 +19,7 @@ function debug(s,a){
 	}
 }
 function status(s) {document.getElementById('status').innerHTML=s;}
-function changeDir(dir)
-{
+function changeDir(dir){
 	svgsDir=dir;
 }
 function showAnimatedGif(image,background,dec){
@@ -71,10 +70,12 @@ function ok(){
     document.getElementById('data').focus();
     document.getElementById('showSource').value="Show sources";
     // get data from the input field
-	data=document.getElementById("data").value[0];
-	console.log("Current target is: ",data);
+	data=document.getElementById("data").value;
+        console.log("Current target is: ",data);
+	console.log("Current target is: ",data[0]);
+	data = data[0];
 	if (!data) {status("No data!"); return;}
-	dec=data.codePointAt(0);
+	dec=data.codePointAt(0);                                 // <-------------------------------- THIS CONVERTS Sinograms into code.
     // svgs folder of this demo contains MakeMeAHanzi svg files
     // svgs folder contains only 鼠貓牛虎兔龍蛇馬羊猴雞狗 at the moment
     // but the same code works with any MakeMeAHanzi or animCJK svg files
@@ -113,6 +114,7 @@ function ok(){
   	xhr.open("GET",file,true);
   	xhr.send();
         console.log("Ends ok()");
+	downloadAll();
 }
 function base64Show(id){
 	e=document.getElementById(id);
@@ -228,8 +230,10 @@ input {font-size:1em;}
 <h1>Image factory</h1>
 <div class="dirSelector">
 <p>Select a repository:</p>
-<label><input checked="" type="radio" name="changeDir" value="1" onclick="changeDir('./svgsJa')"> svgsJa (from AnimCJK, 2998 characters)</label>
-<label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHans')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
+<label><input checked="" type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHans')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
+<label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHansSpecial')"> svgsZhHans (from AnimCJK, 7000 characters)</label>
+<label><input type="radio" name="changeDir" value="2" onclick="changeDir('./svgsZhHant')"> svgsZhHant (from AnimCJK, 198 characters)</label>
+<label><input type="radio" name="changeDir" value="1" onclick="changeDir('./svgsJa')"> svgsJa (from AnimCJK, 2998 characters)</label>
 <label><input type="radio" name="changeDir" value="3" onclick="changeDir('svgs')"> svgs (from MakeMeAHanzi, test with 鼠貓牛虎兔龍蛇馬羊猴雞狗)</label>
 </div>
 <div class="dirSelector">
