@@ -155,11 +155,13 @@ var downloadAll = function () {
     		svgsDir=="./svgsJa"?'j'
     		: '';
     for(var i=0;i<3;i++){
-        var a = document.createElement("a");                        //Create <a>
-        a.href = document.querySelector("#"+letter[i]+' img').src;       // "data:image/png;base64," + ImageBase64;
+	// create virtual button to attach data and download it.
+        var a = document.createElement("a"),                        //Create <a>
+	    img = document.querySelector("#"+letter[i]+' img') || '';
+        a.href = img? document.querySelector("#"+letter[i]+' img').src || '';       // "data:image/png;base64," + ImageBase64;
         a.download = document.querySelector('#data').value[0] +'-'+ locale + suffix[i];  // filename
         //a.textContent = "Download file.";
-        a.click(); //Downloaded file
+        img?a.click():''; //Downloaded file
         //document.querySelector("#"+letter[i]).appendChild(a);
         //document.querySelector("#"+letter[i]+' a').click();
     }
