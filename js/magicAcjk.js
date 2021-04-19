@@ -90,7 +90,7 @@ function generateRedPngFromSvg(s,size,background)
 	// colorize "d"
 	for (k=0;k<km;k++) paths[k].fill=colorize(k+1,km);
 	// return base64 PNG image
-	return generatePngFromSvg(paths,background,mmah,size);
+	return generatePngFromSvg(paths.reverse(),background,mmah,size);
 }
 function makeAnimatedGifFromPngs(ghost,delay,background,dec,show,save) {
     var imgs = ghost.getElementsByTagName('img');
