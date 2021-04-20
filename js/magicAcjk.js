@@ -254,13 +254,12 @@ function generateAnimatedGifFromSvg(s,size,background,delay,dec,show,save)
 				for(k=0;k<=km;k++)
 					if (!ghost.querySelector("#img"+k).done) {allDone=false;break;}
 				if (allDone){ // ready to generate GIF image
-					var last = ghost.pop(),
-					ghost = [ last, ...ghost ];
 					makeAnimatedGifFromPngs(ghost,delay,background,dec,show,save);
 				}
 			};
 			img.src=imgsSrc[k1];
-			ghost.appendChild(img);
+			// put image with all strokes black at start rather than end.
+			k1!==0?ghost.appendChild(img):ghost.prependChild(img);
 		}
 	}
 }
