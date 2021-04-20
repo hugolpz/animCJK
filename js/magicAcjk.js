@@ -259,7 +259,7 @@ function generateAnimatedGifFromSvg(s,size,background,delay,dec,show,save)
 			};
 			img.src=imgsSrc[k1];
 			// put image with all strokes black at start rather than end.
-			k1!==0?ghost.appendChild(img):ghost.prependChild(img);
+			k1!==0?ghost.appendChild(img):ghost.prepend(img);
 		}
 	}
 }
