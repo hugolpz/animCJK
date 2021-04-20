@@ -185,12 +185,13 @@ var downloadWhenReady = function(selector){
       console.log('redExists',redExists);
       console.log('bwExists',bwExists);
       downloadAll();
+	    shiftInputByOne('data');
+      ok(); // clean html, pick char, generate images, append images when ready // shift to next char
     }else if (chars && !redExists && !bwExists ){
       console.log('chars',chars);
       console.log('redExists',redExists);
       console.log('bwExists',bwExists);
 			console.log('Runs Ok()');
-			shiftInputByOne('data'); // shift to next char
       ok(); // clean html, pick char, generate images, append images when ready 
 		}
 		else if(chars && !gifExists){  // input character.s exist, and gif doesn't exist
