@@ -183,10 +183,11 @@ var downloadWhenReady = function(selector){
     if(chars && gifExists && redExists && bwExists){   // input character.s exist, and base64 data exists
       console.log('gifExists',gifExists);
 			console.log('redExists',redExists);
-      downloadAll('bwExists',bwExists);
-			shiftInputByOne('data'); // shift to next char
+      console.log('bwExists',bwExists);
+      downloadAll();
     }else if (chars && !redExists && !bwExists ){
 			console.log('Runs Ok()');
+			shiftInputByOne('data'); // shift to next char
       ok(); // clean html, pick char, generate images, append images when ready 
 		}
 		else if(chars){  // input character.s exist, and base64 data null
