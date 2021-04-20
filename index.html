@@ -193,7 +193,7 @@ var downloadWhenReady = function(selector){
 };
 var monitorGif = function(selector) { 
 	console.log('starts monitoring')
-	window.setInterval(downloadWhenReady(selector), 500); 
+	window.setInterval(function(){downloadWhenReady(selector)}, 500); 
 }
 
 </script>
