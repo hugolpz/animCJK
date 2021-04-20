@@ -213,28 +213,30 @@ function generateAnimatedGifFromSvg(s,size,background,delay,dec,show,save)
 	km=paths.length;
 	if (km)
 	{
-		for (k1=km;k1>=0;k1--) // generate km+1 images, the first is special
+		// generate km+1 images, the first is special
+		for (k1=km;k1>=0;k1--)
 		{
 			for (k2=0;k2<km;k2++)
 			{
+				// default color (not written)
 				if (k2<k1)
 				{
-					// first trick to manage animated image with transparent background
-					// if background parameter is "transparent", draw transparent strokes
-					// else draw grey strokes
+					// if parameter background=="transparent", draw transparent strokes
 					if (background=="transparent") paths[k2].fill="transparent";
-					else paths[k2].fill="#ccc";
+					else paths[k2].fill="#ccc"; // grey stroke
 				}
-				else paths[k2].fill="#000";
+				// written color
+				else paths[k2].fill="#000";         // black stroke
 			}
-			// second trick to manage animated image with transparent background
-			// if background parameter is "transparent", draw white background
-			// else draw background as is
-			// size is always 1024 here even if the generated image has a different size
-			if (background=="transparent")
+			// if parameter background=="transparent", draw white background
+			// note: svg size is always 1024 ; distinct from png size
+			if (background=="transparent"){ 
 				imgsSrc[k1]=generatePngFromSvg(paths,"#fff",mmah,1024);
-			else imgsSrc[k1]=generatePngFromSvg(paths,background,mmah,1024);
+			} else { 
+				imgsSrc[k1]=generatePngFromSvg(paths,background,mmah,1024);
+			}
 		}
+		// print images into ghost dom
 		for (k1=km;k1>=0;k1--)
 		{
 			img=document.createElement('img');
@@ -251,8 +253,11 @@ function generateAnimatedGifFromSvg(s,size,background,delay,dec,show,save)
 				km=this.acjk.km;
 				for(k=0;k<=km;k++)
 					if (!ghost.querySelector("#img"+k).done) {allDone=false;break;}
-				if (allDone) // ready to generate GIF image
+				if (allDone){ // ready to generate GIF image
+					var last = ghost.pop(),
+					ghost = [ last, ...ghost ];
 					makeAnimatedGifFromPngs(ghost,delay,background,dec,show,save);
+				}
 			};
 			img.src=imgsSrc[k1];
 			ghost.appendChild(img);
