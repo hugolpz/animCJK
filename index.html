@@ -173,18 +173,18 @@ var shiftInputByOne = function(id) {
 	document.getElementById(id).value = chars.substring(1); 
 }
 
+// Selector is the gif image: "#c img"
 var downloadWhenReady = function(selector){ 
-  //your code to be executed after 1 second
+	console.log('downloadWhenReady: start.')
 	var element = document.querySelector(selector),
 	href = element?element.href:'',
-			// rather check for GIF data, always last to show up.
 	chars = document.getElementById('data').value;
     if(chars && href!==''){   // input character.s exist, and base64 data exists
 			console.log('href !== null',href!=='')
       console.log('href exists',href)
       downloadAll();
-			shiftInputByOne('data');
-      ok(); // clean html, generate images, append images
+			shiftInputByOne('data'); // shift to next char
+      ok(); // clean html, pick char, generate images, append images when ready
     }else if(chars && !href){  // input character.s exist, and base64 data null
       // do nothing
     }else( // there is no more character
@@ -192,6 +192,7 @@ var downloadWhenReady = function(selector){
     )
 };
 var monitorGif = function(selector) { 
+	console.log('starts monitoring')
 	window.setInterval(downloadWhenReady(selector), 500); 
 }
 
