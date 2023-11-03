@@ -1,3 +1,4 @@
+// add a brush effect to the ends of the strokes
 if (typeof debug=='undefined') debug=0;
 
 SVGPathElement.prototype.getPointAtLengthForAcjk = function(k) {
@@ -91,12 +92,15 @@ function cleanPathBeforeBrushing(d)
 	// add H if omitted
 	q=/(H[0-9-]+)\s/;
 	while (d.match(q)) d=d.replace(q,"$1H");
-	// transform V in L
-	q=/([0-9-]+)(\s[0-9-]+)V([0-9-]+)/;
-	while (d.match(q)) d=d.replace(q,"$1$2L$1 $3");
-	// transform H in L
-	q=/([0-9-]+\s)([0-9-]+)H([0-9-]+)/;
-	while (d.match(q)) d=d.replace(q,"$1$2L$3 $2");
+	while (d.match(/[VH]/))
+	{
+		// transform V in L
+		q=/([0-9-]+)\s([0-9-]+)V([0-9-]+)/;
+		if (d.match(q)) d=d.replace(q,"$1 $2L$1 $3");
+		// transform H in L
+		q=/([0-9-]+)\s([0-9-]+)H([0-9-]+)/;
+		if (d.match(q)) d=d.replace(q,"$1 $2L$3 $2");
+	}
 	// add L if omitted
 	q=/([ML][0-9-]+\s[0-9-]+)\s/;
 	while (d.match(q)) d=d.replace(q,"$1L");
@@ -409,7 +413,7 @@ function strokeBrushing(eBrush)
 				// replace L by a C
 				dSeg=Math.sqrt((x1-x4)*(x1-x4)+(y1-y4)*(y1-y4));
 				if (doubleClipEffect) dSeg=0.8*dSeg*(180-getAngle(x1,y1,x4ex,y4ex,x4,y4))/90;
-				else dSeg=dSeg/3;
+				else dSeg=dSeg/3
 				// compute first handle of the cubic Bezier curve
 				if (x0==x1) // vertical line
 				{

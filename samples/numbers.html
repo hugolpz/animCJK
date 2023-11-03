@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=yes">
+<meta name="description" content="Demo to add a number on each stroke of
+a Japanese or Chinese character using animCJK svg files">
+<link rel="stylesheet" href="_css/withSelector.css" type="text/css">
+<style>
+#a
+{
+	width:300px;
+	height:300px;
+	border:1px solid #ccc;
+	margin-top:0.5em;
+}
+#a svg
+{
+	display:block;
+}
+pre
+{
+	border:1px solid #ccc;
+	padding:0.125em;
+	white-space:pre-wrap;
+}
+</style>
+<title>AnimCJK Numbers</title>
+</head>
+<body>
+<h1>AnimCJK Numbers</h1>
+<nav class="link">
+<a href="https://github.com/parsimonhi/animCJK"><span>Download</span></a>
+<a href="./"><span>Sample selector</span></a>
+</nav>
+<div class="langSelector"></div>
+<div class="charSelector"></div>
+<label>Add numbers: <input type="checkbox" name="numbers"></label>
+<div id="a"></div>
+<details>
+<summary>SVG code</summary>
+<pre class="codeTag"></pre>
+</details>
+<div class="charListSelector"></div>
+<footer>
+<nav class="link">
+<a href="#"><span>Top</span></a>
+<a href="./"><span>Sample selector</span></a>
+<a href="../licenses/COPYING.txt"><span>Licences</span></a>
+</nav>
+</footer>
+<script src="_js/setNumbersAcjk.js"></script>
+<script>
+function updateCodeTag()
+{
+	let e,s;
+	e=document.getElementById("a");
+	s=e.innerHTML;
+	s=s.replace(/((<\/circle>)|(<\/text>))/g,"$1\n");
+	s=s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+	document.querySelector('.codeTag').innerHTML=s;
+}
+function getRadioValue(name)
+{
+	let list=document.querySelectorAll('[name="'+name+'"]');
+	for(k=0;k<list.length;k++) if(list[k].checked) return list[k].value;
+	return "Ja";
+}
+function switchNumbers()
+{
+	setNumbers(document.querySelector('[name="numbers"]').checked);
+	updateCodeTag();
+}
+function updateInfo(s)
+{
+	let d=new Date().getFullYear();
+	s=s.replace(/AnimCJK [0-9-]+/,"AnimCJK 2016-"+d);
+	s=s.replace(/Copyright[^-]+-/,"Copyright FM&SH -");
+	return s;
+}
+function run(s)
+{
+	if(!s.match(/<svg/))
+	{
+		document.getElementById("a").innerHTML="Data not found!";
+		updateCodeTag();
+		return;
+	}
+	s=updateInfo(s);
+	s=s.replace(/<style[^£]+\/style>\s/,"");
+	document.getElementById("a").innerHTML=s;
+	switchNumbers(); 
+}
+function doIt()
+{
+  	let e=document.querySelector('[name="char"]'),c=e.value;
+  	document.getElementById("a").innerHTML="";
+  	document.querySelector('.codeTag').innerHTML="";
+	if(c)
+	{
+		let dec=c.codePointAt(0),lang=getRadioValue("lang");
+		e.value=String.fromCodePoint(dec);
+		fetch('../svgs'+lang+'/'+dec+'.svg')
+		.then(r=>{if(!r.ok) throw r.statusText; return r.text();})
+		.then(r=>{run(r);return true;})
+		.catch(e=>document.getElementById("a").innerHTML=e+' in svgs'+lang);
+	}
+}
+window.addEventListener("load",function(){
+	let e=document.querySelector('[name="numbers"]');
+	e.checked=true;
+	e.addEventListener("click",switchNumbers);
+});
+</script>
+<script src="_js/selectorAcjk.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!--
-AnimCJK 2016-2019 Copyright Francois Mizessyn - https://github.com/parsimonhi/animCJK
+AnimCJK 2016-2022 Copyright 2022 Copyright FM&SH - https://github.com/parsimonhi/animCJK
 Derived from:
     MakeMeAHanzi project - https://github.com/skishore/makemeahanzi
     Arphic PL KaitiM GB font
@@ -48,12 +48,12 @@ svg.acjk path[id] {fill:#ccc;}
 	<clipPath id="z33469c7"><use xlink:href="#z33469d7"/></clipPath>
 	<clipPath id="z33469c8"><use xlink:href="#z33469d8"/></clipPath>
 </defs>
-<path style="--d:1s;" pathLength="3333" clip-path="url(#z33469c1)" d="M197 218L291 225L750 171L845 192"/>
-<path style="--d:2s;" pathLength="3333" clip-path="url(#z33469c2)" d="M334 108L387 136L415 289"/>
-<path style="--d:3s;" pathLength="3333" clip-path="url(#z33469c3)" d="M615 48L654 93L575 287"/>
-<path style="--d:4s;" pathLength="3333" clip-path="url(#z33469c4)" d="M371 368L723 337"/>
-<path style="--d:5s;" pathLength="3333" clip-path="url(#z33469c5)" d="M293 421L333 455L346 550"/>
-<path style="--d:6s;" pathLength="3333" clip-path="url(#z33469c6)" d="M247 577L718 504L832 508"/>
-<path style="--d:7s;" pathLength="3333" clip-path="url(#z33469c7)" d="M581 383L552 418L550 897L521 936L411 881"/>
-<path style="--d:8s;" pathLength="3333" clip-path="url(#z33469c8)" d="M520 561L389 726L161 869"/>
+<path style="--d:1s;" pathLength="3333" clip-path="url(#z33469c1)" d="M200 220L763 171L846 190"/>
+<path style="--d:2s;" pathLength="3333" clip-path="url(#z33469c2)" d="M333 106L389 142L415 292"/>
+<path style="--d:3s;" pathLength="3333" clip-path="url(#z33469c3)" d="M613 43L653 93L576 287"/>
+<path style="--d:4s;" pathLength="3333" clip-path="url(#z33469c4)" d="M367 365L495 368L722 333"/>
+<path style="--d:5s;" pathLength="3333" clip-path="url(#z33469c5)" d="M292 421L332 457L343 556"/>
+<path style="--d:6s;" pathLength="3333" clip-path="url(#z33469c6)" d="M244 572L311 578L715 504L831 505"/>
+<path style="--d:7s;" pathLength="3333" clip-path="url(#z33469c7)" d="M526 381L556 414L550 898L527 934L413 883"/>
+<path style="--d:8s;" pathLength="3333" clip-path="url(#z33469c8)" d="M511 545L488 610L394 721L272 819L160 871"/>
 </svg>
